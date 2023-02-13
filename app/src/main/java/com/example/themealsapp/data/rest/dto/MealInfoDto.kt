@@ -1,6 +1,7 @@
 package com.example.themealsapp.data.rest.dto
 
 
+import com.example.themealsapp.data.local.entity.MealInfoEntity
 import com.example.themealsapp.domain.model.Meal
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -114,8 +115,8 @@ data class MealInfoDto(
     @Json(name = "strYoutube")
     val strYoutube: String? = null
 ) {
-    fun toMeal(): Meal {
-        return Meal(
+    fun toMealInfoEntity(): MealInfoEntity {
+        return MealInfoEntity(
             idMeal = idMeal ?: "",
             strMeal = strMeal ?: "",
             strArea = strArea ?: "",

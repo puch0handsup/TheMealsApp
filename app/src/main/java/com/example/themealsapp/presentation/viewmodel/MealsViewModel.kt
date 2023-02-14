@@ -19,7 +19,7 @@ class MealsViewModel @Inject constructor(
 ): ViewModel(){
 
     init {
-        onSeach("chicken")
+        onSeach("")
     }
 
     private val _searchQuery : MutableLiveData<UIState<String>> = MutableLiveData(UIState.LOADING(""))

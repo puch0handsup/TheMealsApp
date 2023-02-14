@@ -1,6 +1,7 @@
 package com.example.themealsapp.di
 
 import android.content.Context
+import android.net.ConnectivityManager
 import androidx.room.Room
 import com.example.themealsapp.data.local.MealInfoDao
 import com.example.themealsapp.data.local.MealInfoDatabase
@@ -8,6 +9,7 @@ import com.example.themealsapp.data.repository.MealInfoRepositoryImpl
 import com.example.themealsapp.data.rest.MealsAPI
 import com.example.themealsapp.domain.repository.MealInfoRepository
 import com.example.themealsapp.domain.use_case.GetMealsByName
+import com.example.themealsapp.utils.NetworkState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,9 +24,10 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun providesMealInfoUseCase(
-        repository: MealInfoRepository
+        repository: MealInfoRepository,
+        networkState: NetworkState
     ): GetMealsByName {
-        return GetMealsByName(repository)
+        return GetMealsByName(repository, networkState)
     }
 
     @Provides
@@ -55,4 +58,10 @@ class ApplicationModule {
             "themealsapp_db"
         ).build()
     }
+
+    @Provides
+    fun providesConnectivityManager(
+        @ApplicationContext context: Context
+    ): ConnectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 }

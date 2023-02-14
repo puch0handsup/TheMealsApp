@@ -12,9 +12,10 @@ import javax.inject.Inject
 
 class GetMealsByName @Inject constructor(
     private val repository: MealInfoRepository,
+    private val networkState: NetworkState
 ) {
     operator fun invoke(query: String): Flow<UIState<List<Meal>>> {
-        if (query.isBlank())
+        if (query.isBlank() || !networkState.isInternetOn())
             return repository.getMealInfosLocally(query)
         return repository.getMealInfos(query)
     }

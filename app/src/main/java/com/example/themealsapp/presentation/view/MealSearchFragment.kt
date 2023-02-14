@@ -41,6 +41,10 @@ class MealSearchFragment : BaseFragment() {
             adapter = mealsListAdapter
         }
         searchMeals()
+        binding.btnSearch.setOnClickListener {
+            val searchQuery = binding.etSearch.text.toString()
+            mealsViewModel.onSeach(searchQuery)
+        }
 
 
         // Inflate the layout for this fragment

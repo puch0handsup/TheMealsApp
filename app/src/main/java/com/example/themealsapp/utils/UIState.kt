@@ -1,8 +1,8 @@
 package com.example.themealsapp.utils
 
 
-sealed class UIState<T>(val data: T? = null, val message: String? = null) {
-    class LOADING<T>(data: T? = null): UIState<T>(data)
-    class SUCCESS<T>(data: T): UIState<T>()
-    class ERROR<T>(data: T? = null, message: String): UIState<T>(data, message)
+sealed class UIState<out T> {
+    data class LOADING<T>(val message: T? = null): UIState<T>()
+    data class SUCCESS<T>(val response: T): UIState<T>()
+    data class ERROR(val error: Exception): UIState<Nothing>()
 }

@@ -13,9 +13,9 @@ interface MealInfoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMealInfos(infos: List<MealInfoEntity>?)
 
-    @Query("DELETE FROM mealinfoentity WHERE strMeal IN(:strMeals)")
-    suspend fun deleteMealInfos(meals: List<String?>?)
+    @Query("DELETE FROM mealinfoentity WHERE strMeal IN(:strMeal)")
+    suspend fun deleteMealInfos(strMeal: List<String?>?)
 
     @Query("SELECT * FROM mealinfoentity WHERE strMeal LIKE '%' || :strMeal || '%' ")
-    suspend fun getMealInfos(meal: String): List<MealInfoEntity>
+    suspend fun getMealInfos(strMeal: String): List<MealInfoEntity>
 }

@@ -2,18 +2,16 @@ package com.example.themealsapp.data.rest.dto
 
 
 import com.example.themealsapp.domain.model.Ingredient
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import com.google.gson.annotations.SerializedName
 
-@JsonClass(generateAdapter = true)
 data class IngredientInfoDto(
-    @Json(name = "idIngredient")
+    @SerializedName("idIngredient")
     val idIngredient: String? = null,
-    @Json(name = "strDescription")
+    @SerializedName("strDescription")
     val strDescription: String? = null,
-    @Json(name = "strIngredient")
+    @SerializedName("strIngredient")
     val strIngredient: String? = null,
-    @Json(name = "strType")
+    @SerializedName("strType")
     val strType: String? = null
 ) {
     fun toIngredient(): Ingredient {

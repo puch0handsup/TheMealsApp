@@ -1,6 +1,5 @@
 package com.example.themealsapp.domain.model
 
-import com.squareup.moshi.Json
 
 data class Meal(
     val idMeal: String,

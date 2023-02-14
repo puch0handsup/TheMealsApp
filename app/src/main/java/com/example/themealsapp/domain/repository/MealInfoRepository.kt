@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface MealInfoRepository {
     fun getMealInfos(query: String): Flow<UIState<List<Meal>>>
+    fun getMealInfosLocally(query: String): Flow<UIState<List<Meal>>>
 }
